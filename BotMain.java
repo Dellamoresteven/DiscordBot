@@ -16,6 +16,13 @@ class BotMain{
     
     private static JDA jda;
     
+    
+  /**
+   * Main makes bot and makes a event listener which allows the bot to read messages..?
+   * @param args
+   * @throws Exception 
+   */
+    
   public static void main(String args[]) throws Exception{
     
         jda = new JDABuilder(AccountType.BOT).setToken("NTQxMzQyMzI4Nzc5MTc3OTg0.DzeE7w.rvF4dXEcjl8kG3mUUKLBA-W_0N8").buildBlocking();

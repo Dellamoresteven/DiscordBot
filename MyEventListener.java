@@ -10,20 +10,30 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  */
 public class MyEventListener extends ListenerAdapter{
 
+    String prefix = "!";
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         
-       String[] args = event.getMessage().getContentRaw().split( " ");
+       String command = event.getMessage().getContentRaw();
        
-       if(args[0].equalsIgnoreCase(  "Hi")){
+       if(command.equalsIgnoreCase(prefix+"Hey")){
            
            if(!event.getMember().getUser().isBot()) {
            
-            event.getChannel().sendMessage("Hey " + event.getMember().getNickname()+"!").queue();//Never forget .queue method for bot
+               if(null == event.getMember().getNickname()){
+                   
+                   event.getChannel().sendMessage("Hey " + event.getMember().getEffectiveName()+"!").queue();//Never forget .queue method for bot
+                   
+               }else{
+                       
+                   event.getChannel().sendMessage("Hey " + event.getMember().getNickname()+"!").queue();
+                       
+               }
+               
            
            }//End if check if user is bot
            
-       }//End 
+       }//End if for !Hey
         
-    }
+    }//End MyEventListener class
     
 }//End ListenerAdapter class
